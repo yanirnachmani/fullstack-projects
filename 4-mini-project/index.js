@@ -1,9 +1,10 @@
-// import { CONSTANTS } from "./constants.js";
+displayItemsFromLocalStorage();
 
 orderListBackground();
 
 document.querySelector("#add-item").addEventListener("click", addItem);
 
+document.querySelector("#filter").addEventListener("keyup", filterItems);
 const trashItems = document.querySelectorAll("i");
 
 for (const trashItem of trashItems) {
@@ -85,4 +86,36 @@ function removeItemFromLocalStorage(element) {
   const counter = element.getAttribute("counter");
   delete storedList[counter];
   localStorage.setItem("list-items", JSON.stringify(storedList));
+}
+
+function displayItemsFromLocalStorage() {
+  let storedList = JSON.parse(localStorage.getItem("list-items"));
+  if (!storedList) {
+    return;
+  }
+
+  const placeholder = document.createElement("div");
+  for (const key in storedList) {
+    placeholder.innerHTML = storedList[key];
+    document.querySelector("#list").append(placeholder.firstElementChild);
+  }
+  //   placeholder.parentElement.removeChild(placeholder);
+}
+
+function filterItems(event) {
+  const inputValue = event.target.value;
+
+  const lis = document.querySelectorAll("li");
+
+  for (const li of lis) {
+    if (
+      li.innerText
+        .toLocaleLowerCase()
+        .startsWith(inputValue.toLocaleLowerCase())
+    ) {
+      li.style.display = "block";
+    } else {
+      li.style.display = "none";
+    }
+  }
 }

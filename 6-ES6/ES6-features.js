@@ -182,9 +182,9 @@ class Job extends Person {
 }
 
 
-const employee = new Job('Yanir', 41, 'BA', 'Hailui 1 Kiryat Moshe Jerus')
+const Employee = new Job('Yanir', 41, 'BA', 'Hailui 1 Kiryat Moshe Jerus')
 
-employee.motto()
+Employee.motto()
 
 
 

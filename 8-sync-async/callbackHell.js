@@ -1,3 +1,6 @@
+import { addUserToHtml } from './common.js'
+
+
 $('#getWebsiteUserCreds').on('click', getData)
 
 
@@ -9,31 +12,34 @@ function getData() {
             for (const website of websites) {
                 $.ajax({
                     type: 'POST',
-                    contentType: 'application/json charset=utf-8',
                     url: 'http://localhost:3000/bulk-users',
                     data: JSON.stringify(website.users),
-                    success: (users) => {
+                    contentType: 'application/json; charset=UTF-8',
+                    success(users) {
                         for (const user of users) {
                             $.ajax({
                                 type: 'GET',
-                                url: `http://localhost:3000/role/${user.role}`,
-                                success: (role) => {
-                                    console.log(user.id, user.first_name, user.last_name, website.name, role.name, role.credentials);
-
+                                url: 'http://localhost:3000/role/' + user.role,
+                                success(role) {
+                                    user.website = website.name
+                                    user.roleName = role.name
+                                    user.credentials = role.credentials
+                                    addUserToHtml(user, document.getElementById('websiteDetails'))
+                                },
+                                error() {
+                                    console.log(err);
                                 }
                             })
                         }
                     },
-                    error: (err) => {
+                    error() {
                         console.log(err);
-
                     }
                 })
             }
         },
         error: (err) => {
             console.log(err);
-
         }
     })
 }

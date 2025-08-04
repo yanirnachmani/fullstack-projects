@@ -34,7 +34,7 @@ export function addUsersToHtml(users) {
 }
 
 export function addUserToHtml(user, element) {
-    element.append(
+    element.innerHTML +=
         `<li>
         ID: <b>${user.id}</b>,
         Full Name: <b>${user.first_name} ${user.last_name}</b>,
@@ -42,7 +42,7 @@ export function addUserToHtml(user, element) {
         Role Name: <b>${user.roleName}</b>,
         Credentials: <b>${user.credentials}</b>
     </li>`
-    )
+
 }
 
 export function testLogger() {

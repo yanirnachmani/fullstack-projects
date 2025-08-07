@@ -1,24 +1,30 @@
-// import { addUserToHtml } from './common.js'
-
-
-$('#getWebsiteUserCredsByPromise').on('click', getData)
+$('#getWebsiteUserCredsByFetch').on('click', getData)
 
 
 
 function getData() {
     const users = []
     const websites = []
-    promisifyAjax('http://localhost:3000/websites', 'GET')
+    fetch('http://localhost:3000/websites', { method: 'GET' })
+        .then(res => {
+            console.log(res.status);
+            console.log(res.headers);
+            return res.json()
+        })
         .then((websitesRes) => {
             console.log('websites', websitesRes);
-
             const promises = []
             for (const website of websitesRes) {
-                promises.push(promisifyAjax('http://localhost:3000/bulk-users', 'POST', website.users))
+                promises.push(fetch('http://localhost:3000/bulk-users', {
+                    method: 'POST',
+                    body: website.users,
+                    headers: { 'Content-Type': 'application/json; charset=UTF-8' }
+                }))
                 websites.push(website)
             }
-            return Promise.allSettled(promises)//[{status: fulfield, value: [user1, user2], reason: null}, {status: rejected, reason: err, value: null}]
+            return Promise.allSettled(promises)//[{status: fulfielld, value: {status:200, json: Promise()}, reason: null}, {status: rejected, reason: err, value: null}]
         })
+        .then(responses => jsonAll(responses))
         .then((bulkUsersPromisesResult) => {
             console.log('bulk-users', bulkUsersPromisesResult);
 
@@ -54,24 +60,16 @@ function getData() {
         .catch(err => console.log(err))
 }
 
-function promisifyAjax(url, type, data = null) {
-    return new Promise((resolve, reject) => {
-        const ajaxObj = {
-            url,
-            type,
-            success: (data) => {
-                resolve(data)
-            },
-            error(err) {
-                reject(err)
-            }
+
+function jsonAll(responses) {
+    const promises = []
+    for (const response of responses) {
+        if (response.status === 'fulfilled') {
+            promises.push(response.value.json())
+        } else {
+            console.log(response.status);
+            console.log(response.reason);
         }
-        if (type === 'POST') {
-            ajaxObj.contentType = 'application/json; charset=UTF-8'
-            if (data !== null) {
-                ajaxObj.data = JSON.stringify(data)
-            }
-        }
-        $.ajax(ajaxObj)
-    })
+    }
+    return promises
 }

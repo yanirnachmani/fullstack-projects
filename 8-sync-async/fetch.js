@@ -17,7 +17,7 @@ function getData() {
             for (const website of websitesRes) {
                 promises.push(fetch('http://localhost:3000/bulk-users', {
                     method: 'POST',
-                    body: website.users,
+                    body: JSON.stringify(website.users),
                     headers: { 'Content-Type': 'application/json; charset=UTF-8' }
                 }))
                 websites.push(website)
@@ -32,7 +32,7 @@ function getData() {
             for (const key in bulkUsersPromisesResult) {
                 if (bulkUsersPromisesResult[key].status === 'fulfilled') {
                     for (const user of bulkUsersPromisesResult[key].value) {
-                        promises.push(promisifyAjax('http://localhost:3000/role/' + user.role, 'GET'))
+                        promises.push(fetch('http://localhost:3000/role/' + user.role, { method: 'GET' }))
                         users.push({
                             id: user.id,
                             name: user.first_name + ' ' + user.last_name,
@@ -45,6 +45,7 @@ function getData() {
             }
             return Promise.allSettled(promises)
         })
+        .then(responses => jsonAll(responses))
         .then(rolesPromisesResult => {
             console.log('roles', rolesPromisesResult);
             for (const key in rolesPromisesResult) {
@@ -60,16 +61,22 @@ function getData() {
         .catch(err => console.log(err))
 }
 
-
+// [{status: fulfielld, value: {status:200, json: Promise()}, reason: null}, {status: rejected, reason: err, value: null}]
 function jsonAll(responses) {
+    console.log('jsonall', responses);
+
     const promises = []
     for (const response of responses) {
         if (response.status === 'fulfilled') {
-            promises.push(response.value.json())
+            if (response.value.status === 200) {
+                promises.push(response.value.json())
+            } else {
+                console.log('http res error', response.value.status);
+            }
         } else {
             console.log(response.status);
             console.log(response.reason);
         }
     }
-    return promises
+    return Promise.allSettled(promises)
 }

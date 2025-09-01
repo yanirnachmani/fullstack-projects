@@ -3,8 +3,8 @@ import ButtonChild from './ButtonChild'
 
 export class ButtonFather extends Component {
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
 
         this.state = {
             message: 'Hello from me!'

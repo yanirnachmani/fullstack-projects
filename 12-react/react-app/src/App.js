@@ -1,6 +1,12 @@
 
 import './App.css';
-import ListFather from './components/fundamentals/ListFather';
+import 'bootstrap/dist/css/bootstrap.min.css'
+import MemoParentChanger from './components/fundamentals/MemoParentChanger';
+// import BootstrapStyling from './components/fundamentals/BootstrapStyling';
+// import { Styling } from './components/fundamentals/Styling';
+// import { StylingModuleProductWithProb } from './components/fundamentals/StylingModuleProductWithProb';
+// import { StylingModuleProfileWithProb } from './components/fundamentals/StylingModuleProfileWithProb';
+// import ListFather from './components/fundamentals/ListFather';
 // import ButtonFather from './components/fundamentals/ButtonFather';
 // import GreetClassWithState from './components/fundamentals/GreetClassWithState';
 // import PrevState from './components/fundamentals/PrevState';
@@ -21,7 +27,12 @@ function App() {
             {/* <GreetClassWithState /> */}
             {/* <PrevState /> */}
             {/* <ButtonFather /> */}
-            <ListFather />
+            {/* <ListFather /> */}
+            {/* <Styling styles={{ primary: false, 'big-font': true, 'round-border': true }} /> */}
+            {/* <StylingModuleProductWithProb styles={{ card: false, title: true }} />
+            <StylingModuleProfileWithProb /> */}
+            {/* <BootstrapStyling /> */}
+            <MemoParentChanger />
 
         </div>
     );

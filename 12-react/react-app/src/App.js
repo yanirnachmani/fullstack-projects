@@ -1,7 +1,11 @@
 
 import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css'
-import MemoParentChanger from './components/fundamentals/MemoParentChanger';
+import { FetchUsers } from './components/hooks/FetchUsers';
+// import { DisplayCoordinates } from './components/hooks/DisplayCoordinates';
+// import { UseEffectTut } from './components/hooks/UseEffectTut';
+// import 'bootstrap/dist/css/bootstrap.min.css'
+// import { Intro } from './components/hooks/Intro';
+// import MemoParentChanger from './components/fundamentals/MemoParentChanger';
 // import BootstrapStyling from './components/fundamentals/BootstrapStyling';
 // import { Styling } from './components/fundamentals/Styling';
 // import { StylingModuleProductWithProb } from './components/fundamentals/StylingModuleProductWithProb';
@@ -32,7 +36,11 @@ function App() {
             {/* <StylingModuleProductWithProb styles={{ card: false, title: true }} />
             <StylingModuleProfileWithProb /> */}
             {/* <BootstrapStyling /> */}
-            <MemoParentChanger />
+            {/* <MemoParentChanger /> */}
+            {/* <Intro /> */}
+            {/* <UseEffectTut /> */}
+            {/* <DisplayCoordinates /> */}
+            <FetchUsers />
 
         </div>
     );

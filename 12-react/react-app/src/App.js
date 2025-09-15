@@ -1,6 +1,9 @@
 
 import './App.css';
-import { FetchUsers } from './components/hooks/FetchUsers';
+import { ParentChanger } from './components/hooks/UseCallback/ParentChanger';
+// import { FetchUsers } from './components/hooks/FetchUsers';
+// import { UseReducerBasic } from './components/hooks/UseReducerBasic';
+// import UseReducerPostingData from './components/hooks/UseReducerPostingData';
 // import { DisplayCoordinates } from './components/hooks/DisplayCoordinates';
 // import { UseEffectTut } from './components/hooks/UseEffectTut';
 // import 'bootstrap/dist/css/bootstrap.min.css'
@@ -40,8 +43,10 @@ function App() {
             {/* <Intro /> */}
             {/* <UseEffectTut /> */}
             {/* <DisplayCoordinates /> */}
-            <FetchUsers />
-
+            {/* <FetchUsers /> */}
+            {/* <UseReducerBasic /> */}
+            {/* <UseReducerPostingData /> */}
+            <ParentChanger />
         </div>
     );
 }

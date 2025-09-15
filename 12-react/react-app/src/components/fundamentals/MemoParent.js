@@ -2,7 +2,7 @@ import React from 'react'
 import MemoChild from './MemoChild'
 
 export const MemoParent = ({ title, releaseDate, view }) => {
-    console.log('MemoParend rendered');
+    console.log('MemoParent rendered');
     return (
         <div>
             <MemoChild title={title} releaseDate={releaseDate} obj={{}} />

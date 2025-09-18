@@ -1,6 +1,10 @@
 
 import './App.css';
-import { ParentChanger } from './components/hooks/UseCallback/ParentChanger';
+import { Counter } from './components/hooks/UseCustom/Counter';
+// import { AccessingDomElem } from './components/hooks/AccessingDomElem';
+// import { PersistingValue } from './components/hooks/PersistingValue';
+// import { Main } from './components/hooks/useReducerWithUseContext/Main';
+// import { ParentChanger } from './components/hooks/UseCallback/ParentChanger';
 // import { FetchUsers } from './components/hooks/FetchUsers';
 // import { UseReducerBasic } from './components/hooks/UseReducerBasic';
 // import UseReducerPostingData from './components/hooks/UseReducerPostingData';
@@ -46,7 +50,12 @@ function App() {
             {/* <FetchUsers /> */}
             {/* <UseReducerBasic /> */}
             {/* <UseReducerPostingData /> */}
-            <ParentChanger />
+            {/* <ParentChanger /> */}
+            {/* <Main /> */}
+            {/* <PersistingValue /> */}
+            {/* <AccessingDomElem /> */}
+            <Counter />
+
         </div>
     );
 }

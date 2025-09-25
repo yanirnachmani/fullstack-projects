@@ -4,6 +4,14 @@ import store from "./store.js";
 const { subscribe, getState, dispatch } = store
 
 const unsubscribe = subscribe(() => console.log(getState()))
-dispatch(WITHDRAW)
-dispatch(CREDIT_CARD_PAYMENT)
-unsubscribe()
+const unsub = setInterval(() => {
+    dispatch(WITHDRAW)
+    dispatch(CREDIT_CARD_PAYMENT)
+}, 5000)
+
+setTimeout(() => {
+    clearInterval(unsub)
+    unsubscribe()
+}, 16000)
+
+

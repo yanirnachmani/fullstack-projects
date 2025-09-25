@@ -7,12 +7,12 @@ export default (state = initialState, action) => {
         case WITHDRAW.type:
             return ({
                 ...state,
-                checkingAccount: state.checkingAccount.amount - 15
+                checkingAccount: { amount: state.checkingAccount.amount - 15 }
             })
         case CREDIT_CARD_PAYMENT.type:
             return ({
                 ...state,
-                creditCardDebt: state.creditCardDebt.amount + 18
+                creditCardDebt: { amount: state.creditCardDebt.amount + 18 }
             })
         default:
             return state

@@ -4,6 +4,8 @@ import { GET_USERS_REQ, POST_USERS_REQ, GET_USERS_RES_FAILED, GET_USERS_RES_OK, 
 import { getUsersState, postUsersState } from './states.js'
 
 export const getUsersReducer = (state = getUsersState, action) => {
+    console.log(action)
+
     switch (action.type) {
         case GET_USERS_REQ:
             return {

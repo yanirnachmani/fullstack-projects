@@ -4,8 +4,8 @@ import { thunk } from 'redux-thunk'
 
 export default createStore(
     combineReducers({
-        getUsersReducer,
-        postUsersReducer
+        getUsersReqAction: getUsersReducer,
+        postUsersReqAction: postUsersReducer
     }),
     applyMiddleware(thunk)
 )

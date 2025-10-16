@@ -1,0 +1,6 @@
+export const GET_USERS_REQ = 'get users req'
+export const POST_USERS_REQ = 'post users req'
+export const GET_USERS_RES_OK = 'get users res ok'
+export const GET_USERS_RES_FAILED = 'get users res failed'
+export const POST_USERS_RES_OK = 'post users res ok'
+export const POST_USERS_RES_FAILED = 'post users res failed'

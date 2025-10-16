@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+        body {
+
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+
+            line-height: 1.5;
+
+        }
+
+        label {
+
+            width: 15rem;
+
+            display: block;
+
+            cursor: pointer;
+
+        }
+
+        form {
+
+            padding: 1rem;
+
+        }
+
+        input[type='text']:focus,
+
+        input[type='email']:focus {
+
+            border: 1px solid #ccc;
+
+            border-radius: 5px;
+
+            padding: 0.5rem 0.7rem;
+
+            width: 15rem;
+
+            resize: none;
+
+        }
+
+        input[type='text']:focus,
+
+        input[type='email']:focus {
+
+            border-color: #7db0fb;
+
+            outline: 0;
+
+            box-shadow: 0 0 0 2px rgba(24, 117, 255, 0.25);
+
+            transition: border-color 0.5s, box-shadow 0.5s;
+
+        }
+
+        .form-group {
+
+            margin-bottom: 1rem;
+
+        }
+    </style>
+    <title>Http</title>
+</head>
+
+<body>
+    <h2>XHR</h2>
+    <button id="getSync">Get Sync</button>
+    <button id="getAsync">Get Async</button>
+    <button id="postSync">Post Sync</button>
+    <button id="postAsync">Post Async</button>
+    <button id="test">Test</button>
+    <h2>AJAX</h2>
+    <button id="getAjax">Get</button>
+    <button id="postAjax">Post</button>
+    <ul id="users"></ul>
+    <h2>Callback Hell</h2>
+    <button id="getWebsiteUserCreds">Get</button>
+    <ul id="websiteDetails"></ul>
+    <h2>Promise</h2>
+    <button id="getWebsiteUserCredsByPromise">Get</button>
+    <ul id="websiteDetailsPromise"></ul>
+    <h2>Fetch</h2>
+    <button id="getWebsiteUserCredsByFetch">Get</button>
+    <ul id="websiteDetailsFetch"></ul>
+    <h2>Async Await Fetch</h2>
+    <button id="getWebsiteUserCredsByAsyncAwaitFetch">Get</button>
+    <ul id="websiteDetailsAsyncAwaitFetch"></ul>
+    <form action="http://localhost:3000/form" method="post">
+        <input type="text" name="username">
+        <button>Submit</button>
+    </form>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <!-- <script src="xhr.js" type="module"></script>
+    <script src="ajax.js" type="module"></script>
+    <script src="callbackHell.js" type="module"></script> -->
+    <!-- <script src="./promise.js"></script> -->
+    <!-- <script src="./promisifyAjax.js"></script> -->
+    <!-- <script src="./fetch.js"></script> -->
+    <!-- <script type="module" src="./async-await-promisifyAjax.js"></script> -->
+    <script src="./fetch-async-await.js"></script>
+</body>
+
+</html>

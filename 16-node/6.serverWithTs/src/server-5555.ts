@@ -1,8 +1,10 @@
-import { createServer } from 'http'
+import { createServer, Server, IncomingMessage, ServerResponse } from 'http'
 import { createReadStream } from 'fs'
 
+const hostname = 'localhost'
+const port = 5555
 
-const server = createServer((req, res) => {
+const server: Server = createServer((req: IncomingMessage, res: ServerResponse) => {
     try {
         // throw {message: 'be weak!'}
         // res.writeHead(200, {'content-type': 'text/plan'})
@@ -42,9 +44,14 @@ const server = createServer((req, res) => {
         }
 
     } catch (error) {
+        if (error instanceof Error) {
+            console.error("Error message:", error.message);
+        } else {
+            console.error("Unknown error:", error);
+        }
         res.writeHead(500, { 'content-type': 'text/plan' })
-        res.end(error.message)
     }
 })
 
-server.listen(3333, () => console.log('Listening on port 3333'))
+
+server.listen(port, hostname, () => console.log(`Listening on port ${port}`))

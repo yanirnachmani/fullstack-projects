@@ -1,0 +1,12 @@
+ts --init
+"rootDir": "./src",
+"outDir": "./dist",
+"include": [
+    "src"
+],
+"types": [
+    "node"
+],
+npm i -D @type/node
+"tsc": "^2.0.4",
+"typescript": "^5.9.3"

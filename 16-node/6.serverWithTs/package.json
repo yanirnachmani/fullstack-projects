@@ -1,19 +1,17 @@
 {
-    "name": "type-definition",
+    "name": "6.serverwithts",
     "version": "1.0.0",
     "description": "",
     "main": "index.js",
+    "type": "module",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "keywords": [],
     "author": "",
     "license": "ISC",
-    "dependencies": {
-        "lodash": "^4.17.21"
-    },
     "devDependencies": {
-        "@types/lodash": "^4.17.20",
-        "@types/node": "^24.10.0"
+        "@types/node": "^24.10.0",
+        "typescript": "^5.9.3"
     }
 }

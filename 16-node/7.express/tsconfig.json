@@ -6,7 +6,7 @@
         "outDir": "./dist",
         // Environment Settings
         // See also https://aka.ms/tsconfig/module
-        "module": "commonjs",
+        "module": "es2015",
         "target": "es2016",
         // For nodejs:
         // "lib": ["esnext"],

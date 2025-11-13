@@ -1,12 +1,18 @@
-import express from 'express'
+import { Router } from 'express'
 import { readFile, writeFile } from 'fs/promises'
-import type { User } from './types.ts'
+type User = {
+    "id": number
+    "email": string
+    "first_name": string
+    "last_name": string
+    "avatar": string
+    "role": number
+}
 
-const app = express()
+const router = Router()
 
-app.use(express.json())
 
-app.get('/', async (req, res) => {
+router.get('/', async (req, res) => {
     try {
         const firstName = req.query.first_name
         const lastName = req.query.last_name
@@ -24,7 +30,7 @@ app.get('/', async (req, res) => {
 })
 
 
-app.get('/:id', async (req, res) => {
+router.get('/:id', async (req, res) => {
     try {
         const userId = +req.params.id
         const usersDB = JSON.parse(await readFile(`${process.cwd()}/db/users.json`, 'utf-8'))
@@ -39,7 +45,7 @@ app.get('/:id', async (req, res) => {
     }
 })
 
-app.post('/', async (req, res) => {
+router.post('/', async (req, res) => {
     try {
         const usersDB = JSON.parse(await readFile(`${process.cwd()}/db/users.json`, 'utf-8'))
         console.log({
@@ -69,7 +75,7 @@ app.post('/', async (req, res) => {
 })
 
 
-app.put('/:id', async (req, res) => {
+router.put('/:id', async (req, res) => {
     try {
         const userId = +req.params.id
         const usersDB = JSON.parse(await readFile(`${process.cwd()}/db/users.json`, 'utf-8'))
@@ -89,7 +95,7 @@ app.put('/:id', async (req, res) => {
     }
 })
 
-app.patch('/:id', async (req, res) => {
+router.patch('/:id', async (req, res) => {
     try {
         const userId = +req.params.id
         const usersDB = JSON.parse(await readFile(`${process.cwd()}/db/users.json`, 'utf-8'))
@@ -109,7 +115,7 @@ app.patch('/:id', async (req, res) => {
     }
 })
 
-app.delete('/:id', async (req, res) => {
+router.delete('/:id', async (req, res) => {
     try {
         const userId = +req.params.id
         const usersDB = JSON.parse(await readFile(`${process.cwd()}/db/users.json`, 'utf-8'))
@@ -128,7 +134,4 @@ app.delete('/:id', async (req, res) => {
     }
 })
 
-app.use((req, res) => {
-    res.status(400).send('Resource not found!')
-})
-app.listen(3000, () => console.log('Dolex 3000'))
+export default router

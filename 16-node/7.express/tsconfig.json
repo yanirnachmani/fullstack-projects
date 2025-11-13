@@ -37,7 +37,10 @@
         // "moduleDetection": "force",
         "skipLibCheck": true,
         // "allowSyntheticDefaultImports": true,
-        "esModuleInterop": true
+        "esModuleInterop": true,
+        "allowImportingTsExtensions": true,
+        "noEmit": true,
+        "moduleResolution": "bundler"
     },
     "include": [
         "src"

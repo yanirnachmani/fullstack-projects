@@ -48,19 +48,27 @@
         "role": 2
     },
     {
-        "id": 7,
-        "email": "tracey.ramos@reqres.in",
-        "first_name": "Tracey",
-        "last_name": "Ramos",
-        "avatar": "https://reqres.in/img/faces/6-image.jpg",
-        "role": 2
-    },
-    {
         "id": 8,
         "email": "tracey.ramos@reqres.in",
         "first_name": "Dolex",
         "last_name": "Ramos",
         "avatar": "https://reqres.in/img/faces/6-image.jpg",
         "role": 2
+    },
+    {
+        "id": 9,
+        "email": "spacey.ramos@reqres.in",
+        "first_name": "Nadix",
+        "last_name": "Ramox",
+        "avatar": "https://reqres.in",
+        "role": 3
+    },
+    {
+        "id": 10,
+        "email": "spacey.ramos@reqres.in",
+        "first_name": "Yanix",
+        "last_name": "Ramox",
+        "avatar": "https://reqres.in",
+        "role": 3
     }
 ]

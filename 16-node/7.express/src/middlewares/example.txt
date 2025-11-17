@@ -1,0 +1,25 @@
+RAINBOW
+
+yossi = iuiuiuiu
+dolex = tytytyty
+yanix = rtrtrtrt
+
+
+1. 
+password
+--------
+iuiuiuiu
+tytytyty
+rtrtrtrt
+
+2.
+password    salt  email
+--------    ----  -----
+lklklklklk  5454
+eeeeeeeeee  6565
+ekhgfyegfe  6767  yanir@er
+
+
+.env
+yanix6767popopopopopo ekhgfyegfe
+

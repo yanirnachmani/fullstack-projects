@@ -8,9 +8,12 @@ const authMiddleware = (req: Request, res: Response, next: NextFunction) => {
         } else {
             res.locals.message = 'Not Classified'
         }
+        // throw 'This is big fault'
         next()
     } catch (error) {
-        res.status(500)
+        res.locals.error = true
+        res.locals.message = error
+        next()
     }
 }
 

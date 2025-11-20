@@ -6,7 +6,7 @@ dotenv.config()
 
 
 const port = process.env.PORT || '3000'
-const hostname = process.env.HOSTNAME || 'localhost'
+const hostname = process.env.HOST || '127.0.0.1'
 const app = express()
 
 app.use(express.json())
@@ -26,4 +26,4 @@ app.use((req, res) => {
     res.status(404).send('Resource not found')
 })
 
-app.listen(parseInt(port), hostname, () => console.log(`Avix listening on port ${port}`))
+app.listen(parseInt(port), hostname, () => console.log(`Avix listening on port ${port} and host ${hostname}`))

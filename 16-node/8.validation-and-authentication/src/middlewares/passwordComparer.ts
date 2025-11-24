@@ -9,7 +9,7 @@ export default async (req: Request, res: Response, next: NextFunction) => {
 
         const { email, username, password } = req.body
 
-        const users = JSON.parse(await readFile(`${process.cwd()}/db/users.json`, 'utf8'))
+        const users = JSON.parse(await readFile(`${process.cwd()}/db/admins.json`, 'utf8'))
 
         const [user] = users.filter((user: User) => user.username === username || user.email === email)
 

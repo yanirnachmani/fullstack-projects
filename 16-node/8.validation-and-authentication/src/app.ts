@@ -1,5 +1,6 @@
 import express from 'express'
 import authApi from './apis/auth.ts'
+import usersApi from './apis/users.ts'
 import dotenv from 'dotenv'
 
 dotenv.config()
@@ -12,6 +13,7 @@ const app = express()
 app.use(express.json())
 
 app.use('/auth', authApi)
+app.use('/users', usersApi)
 
 app.get('/', (req, res) => {
     try {

@@ -29,7 +29,7 @@ router.post('/register', [matchedData, ...dataValidator, passwordValidator, pass
 
         const { email, username } = req.body
 
-        const users = JSON.parse(await readFile(`${process.cwd()}/db/users.json`, 'utf8'))
+        const users = JSON.parse(await readFile(`${process.cwd()}/db/admins.json`, 'utf8'))
 
         const [user] = users.filter((user: User) => user.username === username || user.email === email)
 
@@ -47,20 +47,23 @@ router.post('/register', [matchedData, ...dataValidator, passwordValidator, pass
 
         users.push(newUser)
 
-        await writeFile(`${process.cwd()}/db/users.json`, JSON.stringify(users))
+        await writeFile(`${process.cwd()}/db/admins.json`, JSON.stringify(users))
+
+        if (!process.env.ACCESS_TOKEN_SECRET) {
+            return res.status(500).send('Internal server error')
+        }
 
         jwt.sign(
             { username, email },
-            process.env.ACCESS_TOKEN_SECRET as string,
-            { expiresIn: '30s' },
+            process.env.ACCESS_TOKEN_SECRET,
+            { expiresIn: '3m' },
             (err, accessToken) => {
                 if (err) {
-                    return res.status(500).send('Registered without token, please login')
+                    return res.status(500).send('Register went well but token hasn\'t created')
                 }
-                res.status(200).json(accessToken)
+                res.json({ jwt: accessToken })
             }
         )
-
 
 
     } catch (error: any) {
@@ -72,7 +75,23 @@ router.post('/register', [matchedData, ...dataValidator, passwordValidator, pass
 router.post('/login', [passwordComparer], async (req: Request, res: Response, next: NextFunction) => {
     try {
 
-        res.status(200).json(res.locals.user)
+        const { username, email } = req.body
+
+        if (!process.env.ACCESS_TOKEN_SECRET) {
+            return res.status(500).send('Internal server error')
+        }
+
+        jwt.sign(
+            { username, email },
+            process.env.ACCESS_TOKEN_SECRET,
+            { expiresIn: '3m' },
+            (err, accessToken) => {
+                if (err) {
+                    return res.status(500).send('Register went well but token hasn\'t created')
+                }
+                res.json({ jwt: accessToken })
+            }
+        )
 
 
     } catch (error: any) {

@@ -1,0 +1,30 @@
+[
+    {
+        "id": 9000,
+        "name": "Yossi",
+        "products": [
+            {
+                "id": 45,
+                "name": "Computer"
+            },
+            {
+                "id": 47,
+                "name": "Tesla"
+            }
+        ]
+    },
+    {
+        "id": 9001,
+        "name": "Avi",
+        "products": [
+            {
+                "id": 45,
+                "name": "Computer"
+            },
+            {
+                "id": 78,
+                "name": "Subaro Station"
+            }
+        ]
+    }
+]

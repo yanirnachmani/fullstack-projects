@@ -1,0 +1,44 @@
+[
+    {
+        "student_id": 1,
+        "name": "yossix"
+    },
+    {
+        "student_id": 2,
+        "name": "nadix"
+    },
+    {
+        "student_id": 3,
+        "name": "naknix"
+    }
+]
+
+[
+    {
+        "course_id": 1,
+        "name": "Phisics"
+    },
+    {
+        "course_id": 2,
+        "name": "Philosophy"
+    },
+    {
+        "course_id": 3,
+        "name": "History"
+    }
+]
+
+[
+    {
+        "course_id" : 2,
+        "student_id" : 1
+    },
+    {
+        "course_id" : 2,
+        "student_id" : 3
+    },
+    {
+        "course_id" : 1,
+        "student_id" : 3
+    }
+]

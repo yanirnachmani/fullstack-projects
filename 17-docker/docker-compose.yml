@@ -1,0 +1,14 @@
+name: devserver
+
+services:
+  server-3000:
+    build:
+      context: ./server-3000
+    container_name: nadix6
+    ports:
+      - "3001:3001"
+    volumes:
+      - ./server-3000:/src        # bind-mount for live code changes
+      - /src/node_modules         # anonymous volume to preserve node_modules
+    command: node index.js
+    restart: unless-stopped

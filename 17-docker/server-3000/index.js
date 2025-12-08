@@ -6,7 +6,7 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 
-console.log("sdbhfjwsjfbhfbej")
+console.log("Ruslan is here quitely!")
 
 app.get('/websites', async function (req, res) {
     try {

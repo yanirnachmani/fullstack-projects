@@ -1,0 +1,38 @@
+[{
+    "id": 1,
+    "first_name": "Paul",
+    "last_name": "Miller",
+    "tell":144477,
+    "city":  "OR",
+    "location": {
+        "x":23,
+        "Y":45
+    },
+    "mail": "e@e.com",
+    "professions": ["Lecturer", "Unemployee", "Trainer"],
+    "cars": [
+        {
+            "model": "Rolls Royce",
+            "year": 1991
+        }
+    ]
+},
+{
+    "id": 1,
+    "first_name": "Paul",
+    "last_name": "Miller",
+    "tell":144477,
+    "city":  "OR",
+    "location": {
+        "x":23,
+        "Y":45
+    },
+    "mail": "e@e.com",
+    "professions": ["Lecturer", "Unemployee", "Trainer"],
+    "cars": [
+        {
+            "model": "Rolls Royce",
+            "year": 1991
+        }
+    ]
+}]

@@ -63,12 +63,36 @@ having count(*) > 1);
 select distinct client_id, name from  clients where client_id = any (select client_id 
 from invoices
 group by client_id
-having count(*) > 1)
+having count(*) > 1);
 
 
     
+select
+	invoice_id,
+    invoice_total,
+    ( 
+		select
+			i.invoice_total - avg(invoice_total)
+            from invoices
+    ) as diff_invoice_total,
+	( 
+		select
+			avg(invoice_total)
+            from invoices
+    ) as average
+from invoices i;
 
 
+select
+    -- invoice_date,
+	avg(invoice_total) as avge
+from invoices 
+where invoice_id < 6
+-- group by invoice_date
+
+
+
     
     
-    
+-- In aggregated query without GROUP BY, expression #1 of SELECT list contains nonaggregated column 'sql_invoicing.i.invoice_id'; this is incompatible with sql_mode=only_full_group_by	0.000 sec
+

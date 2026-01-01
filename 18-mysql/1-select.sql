@@ -16,7 +16,12 @@
 -- join customers
 -- on orders.customer_id = customers.customer_id;
 
-select order_id, customers.customer_id, first_name, last_name
-from orders
-join customers
-on orders.customer_id = customers.customer_id;
+-- select order_id, customers.customer_id, first_name, last_name
+-- from orders
+-- join customers
+-- on orders.customer_id = customers.customer_id;
+
+
+select * from customers;
+select * from orders;
+select * from shippers;

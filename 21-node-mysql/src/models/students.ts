@@ -63,4 +63,76 @@ export class Student {
       throw error;
     }
   }
+
+  /**
+   * Retrieves all students from the database.
+   */
+  public static async selectAll(): Promise<StudentData[]> {
+    const query = 'SELECT * FROM students';
+    const [rows] = await pool.execute<StudentData[]>(query);
+    return rows;
+  }
+
+  /**
+   * Retrieves a student by ID.
+   */
+  public static async selectById(id: number): Promise<StudentData | null> {
+    const query = 'SELECT * FROM students WHERE id = ?';
+    const [rows] = await pool.execute<StudentData[]>(query, [id]);
+    return rows.length > 0 ? rows[0] : null;
+  }
+
+  /**
+   * Updates a student's information.
+   */
+  public static async update(id: number, data: Partial<StudentData>): Promise<void> {
+    const fields = Object.keys(data)
+      .map((key) => `${key} = ?`)
+      .join(', ');
+
+    if (!fields) return;
+
+    const values = [...Object.values(data), id];
+    const query = `UPDATE students SET ${fields} WHERE id = ?`;
+
+    await pool.execute(query, values);
+  }
+
+  /**
+   * Deletes a student by ID.
+   */
+  public static async delete(id: number): Promise<void> {
+    const query = 'DELETE FROM students WHERE id = ?';
+    await pool.execute(query, [id]);
+  }
+
+  /**
+   * Enrolls a student in multiple courses.
+   */
+  public static async enroll(studentId: number, courseIds: number[]): Promise<void> {
+    const query = 'INSERT INTO students_courses (student_id, course_id) VALUES (?, ?)';
+
+    // Using a loop for simplicity. For bulk inserts, a dynamic query could be built.
+    // Using Promise.all to run them in parallel
+    const promises = courseIds.map(courseId => pool.execute(query, [studentId, courseId]));
+    await Promise.all(promises);
+  }
+
+  /**
+   * Retrieves all courses a student is enrolled in.
+   */
+  public static async getCourses(studentId: number): Promise<RowDataPacket[]> {
+    const query = `
+      SELECT c.* 
+      FROM courses c 
+      JOIN students_courses sc ON c.id = sc.course_id 
+      WHERE sc.student_id = ?
+    `;
+    const [rows] = await pool.execute<RowDataPacket[]>(query, [studentId]);
+    return rows;
+  }
 }
+
+
+
+

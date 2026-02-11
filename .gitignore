@@ -18,7 +18,7 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# OS and Editor files
+# OS and Editor file
 .DS_Store
 .vscode/
 .idea/
